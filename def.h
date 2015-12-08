@@ -68,7 +68,7 @@ typedef unsigned long int Uint5;
 #define MSIZE MWIDTH*MHEIGHT
 
 #define MAX_REC_BUFFER 262144l
-           /* I reckon this is enough for about 36 hours of continuous play. */
+/* I reckon this is enough for about 36 hours of continuous play. */
 
 #define INI_GAME_SETTINGS "Game"
 #define INI_GRAPHICS_SETTINGS "Graphics"
@@ -96,25 +96,25 @@ typedef unsigned long int Uint5;
 #endif
 
 #ifdef WIN32
- #if defined (RUNTIMEDYNAMICLINK) && !defined (DIRECTX)
-  #define DIRECTX
- #endif
+#if defined (RUNTIMEDYNAMICLINK) && !defined (DIRECTX)
+#define DIRECTX
+#endif
 #else
- #ifdef DIRECTX
-  #undef DIRECTX
- #endif
- #ifdef RUNTIMEDYNAMICLINK
-  #undef RUNTIMEDYNAMICLINK
- #endif
- #if defined (_WINDOWS)
-  #ifndef WIN16
-   #define WIN16
-  #endif
-  #ifdef _MSVC
-   #define farmalloc _fmalloc
-   #define farfree _ffree
-  #endif
- #endif 
+#ifdef DIRECTX
+#undef DIRECTX
+#endif
+#ifdef RUNTIMEDYNAMICLINK
+#undef RUNTIMEDYNAMICLINK
+#endif
+#if defined (_WINDOWS)
+#ifndef WIN16
+#define WIN16
+#endif
+#ifdef _MSVC
+#define farmalloc _fmalloc
+#define farfree _ffree
+#endif
+#endif 
 #endif
 
 #if defined ARM || defined WIN32 || defined UNIX || defined MINGW
@@ -139,7 +139,9 @@ typedef unsigned long int Uint5;
 /* While SDL and other X11 related apps could be runned as ordinary user */
 #ifdef FREEBSD
 #include <sys/syslimits.h>
-#else /* I donno what is analog of PATH_MAX for Linux :( */
+#elif defined LINUX
+#include <linux/limits.h>
+#else /* Not sure where we are, default to PATH_MAX 1024 */
 #define PATH_MAX 1024
 #endif
 #define ININAME strncat(strncpy(malloc(PATH_MAX),getenv("HOME"),PATH_MAX),"/.digger.rc",PATH_MAX)
