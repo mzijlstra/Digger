@@ -10,7 +10,8 @@ void game(void);
 void maininit(void);
 int mainprog(void);
 
-extern Sint4 nplayers,diggers,curplayer,startlev;
+extern Sint4 nplayers,diggers,curplayer;
+extern unsigned int startlev;
 extern bool levfflag;
 extern char levfname[];
 extern char pldispbuf[];

@@ -29,8 +29,8 @@ struct game {
 
 char pldispbuf[14];
 
-Sint4 curplayer = 0, nplayers = 1, penalty = 0, diggers = 1, startlev = 1;
-
+Sint4 curplayer = 0, nplayers = 1, penalty = 0, diggers = 1;
+unsigned int startlev = 1;
 bool levnotdrawn = FALSE, alldead = FALSE, unlimlives = FALSE, started;
 
 char levfname[132];
